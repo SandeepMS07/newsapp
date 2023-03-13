@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Head = () => {
+const head = () => {
   return (
     <>
         <title>BREAKING NEWS</title>
@@ -10,4 +10,4 @@ const Head = () => {
   )
 }
 
-export default Head
+export default head

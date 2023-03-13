@@ -1,6 +1,7 @@
-import { categories } from './../constants/constants'
 import { gql } from 'graphql-request'
 import sortNewsByImage from './sortNewsByImage'
+import response from "../response.json";
+
 
 const fetchNews = async (
   category?: Category | string,
@@ -44,36 +45,38 @@ const fetchNews = async (
   `
 
   // Fetch functions with Next.js 13 caching ...
-//   const res = await fetch(
-//     'https://eitorf.stepzen.net/api/idolized-oyster/__graphql',
-//     {
-//       method: 'POST',
-//       cache: isDynamic ? 'no-cache' : 'default',
-//       next: isDynamic ? { revalidate: 0 } : { revalidate: 20 },
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Authorization: `Apikey ${process.env.STEPZEN_API_KEY}`,
-//       },
-//       body: JSON.stringify({
-//         query,
-//         variables: {
-//           access_key: process.env.MEDIASTACK_API_KEY,
-//           categories: category,
-//           keywords: keywords,
-//         },
-//       }),
-//     },
-// //   )
+  // const res = await fetch(
+  //   'https://eitorf.stepzen.net/api/idolized-oyster/__graphql',
+  //   {
+  //     method: 'POST',
+  //     cache: isDynamic ? 'no-cache' : 'default',
+  //     next: isDynamic ? { revalidate: 0 } : { revalidate: 20 },
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: `Apikey ${process.env.STEPZEN_API_KEY}`,
+  //     },
+  //     body: JSON.stringify({
+  //       query,
+  //       variables: {
+  //         access_key: process.env.MEDIASTACK_API_KEY,
+  //         categories: category,
+  //         keywords: keywords,
+  //       },
+  //     }),
+  //   },
+  // )
 
-//   console.log('LOADING NEW DATA FROM API for category >>>', category, keywords)
+  // console.log('LOADING NEW DATA FROM API for category >>>', category, keywords)
 
-// //   const newsResponse = await res.json()
-//   // Sort function by images vs not images present
+  // const newsResponse = await res.json()
+  // // // Sort function by images vs not images present
 
-//   const news = sortNewsByImage(newsResponse.data.myQuery)
+  // const news = sortNewsByImage(newsResponse.data.myQuery)
+  const news = sortNewsByImage(response)
 
-  //return res
-//   return news
+
+  // return res
+  return news
 }
 
 export default fetchNews

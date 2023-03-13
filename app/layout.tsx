@@ -1,5 +1,6 @@
 import "../styles/globals.css";
-import Head from "./head";
+import Providers from "./components/Providers";
+import head from "./head";
 import Header from "./Header";
 
 export const metadata = {
@@ -14,11 +15,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head />
-      <body className={`bg-gray-100
-       transition-all duration-700`}>
-        <Header />
-        <div className="max-w-6xl mx-auto">{children}</div>
+      <head />
+
+      <body
+        className={`bg-gray-100 dark:bg-zinc-900
+       transition-all duration-700`}
+      >
+        <Providers>
+          <Header />
+          <div className="max-w-6xl mx-auto">{children}</div>
+        </Providers>
       </body>
     </html>
   );
